@@ -11,9 +11,12 @@ const app = express();
 app.use(express.json());
 
 // Middleware to handle CORS policies
+// Option 1 : Allow All Origins with Default of cors(*). Essentially removes the security mesure from CORS.
+//app.use(cors());
+//Option 2 : Allow Custom Origins. It is far more secured
 app.use(
   cors({
-    origin: "http://localhost:3000",
+    origin: ["http://localhost:5555", "http://localhost:5173"],
     methods: ["GET", "POST", "PUT", "DELETE"],
     allowedHeaders: ["content-Type"],
   })
